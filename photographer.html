@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <title>Fisheye - Photographe </title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html" aria-label="Accueil"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page"/></a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
+      <section class="photograph-header">
+        <button class="contact_button" onclick="displayModal()" aria-label="Contactez-moi">Contactez-moi</button>
+      </section>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
+    <div id="contact_modal" role="dialog" aria-hidden="true">
+			<div class="modal" aria-hidden="true">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" alt="Fermer la fenêtre" onclick="closeModal()" />
         </header>
-				<form>
+				<form name="contact">
 					<div>
 						<label>Prénom</label>
 						<input />
@@ -31,6 +31,8 @@
 				</form>
 			</div>
 		</div>
+    <script src="scripts/factories/photographerFactory.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

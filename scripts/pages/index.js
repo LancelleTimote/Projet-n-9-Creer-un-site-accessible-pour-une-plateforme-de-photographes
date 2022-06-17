@@ -1,10 +1,6 @@
-const getPhotographers = async () => {
-    const { photographers } = await (
-        fetch('./data/photographers.json')
-        .then((response) => response.json())
-    )
-    console.log(photographers); // à supprimer
-    return { photographers }
+async function getPhotographers() {
+    const data = await fetch("./data/photographers.json");
+    return await data.json();
 }
 
 async function displayData(photographers) {
