@@ -1,6 +1,6 @@
 function photographerFactory(data) {
     const { id, portrait, name, city, country, tagline, price } = data;
-    const picture = `assets/photographers/${portrait}`;
+    const picture = `assets/photographers/photographers_profile_photo/${portrait}`;
 
     //affichage de tous les photographes
     function getUserCardDOM() {
@@ -38,7 +38,7 @@ function photographerFactory(data) {
     }
 
     function getPhotographerProfile() {
-        const photographerProfile = document.querySelector(".photograph-header");
+        const photographerProfile = document.querySelector(".photograph_header");
         const article = document.createElement("article");
         photographerProfile.prepend(article);
 

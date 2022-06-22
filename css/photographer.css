@@ -1,4 +1,4 @@
-.photograph-header {
+.photograph_header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 25px 95px;
@@ -8,28 +8,28 @@
     align-items: center;
 }
 
-.photograph-header article h1 {
+.photograph_header article h1 {
     color: #D3573C;
     font-size: 4rem;
     margin: 0;
 }
 
-.photograph-header article h2 {
+.photograph_header article h2 {
     color: #901C1C;
     font-size: 1.5rem;
     margin-top: 5px;
 }
 
-.photograph-header article h1, .photograph-header article h2 {
+.photograph_header article h1, .photograph_header article h2 {
     font-weight: normal;
 }
 
-.photograph-header article p {
+.photograph_header article p {
     font-size: 1.1rem;
     margin-bottom: 0;
 }
 
-.photograph-header img {
+.photograph_header img {
     width: 200px;
     height: 200px;
     object-fit: cover;
