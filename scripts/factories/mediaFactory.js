@@ -1,5 +1,5 @@
 function mediasFactory(data) {
-    const { photographerId, id, title, image, video } = data;
+    const { photographerId, id, title, image, video, likes } = data;
 
     function getMediaCardDOM() {
         const mediaArticle = document.createElement('article');
@@ -21,7 +21,7 @@ function mediasFactory(data) {
             mediaArticle.appendChild(videoElement);
         }else{
             const picture = `assets/photographers/${photographerId}/${image}`;
-            const img = document.createElement('img');
+            const img = document.createElement("img");
             img.setAttribute("src", picture);
             img.setAttribute("alt", title);
             img.setAttribute("tabindex", "0");
@@ -29,6 +29,29 @@ function mediasFactory(data) {
             img.className = "media_img";
             mediaArticle.appendChild(img);
         }
+
+        const mediaDescription = document.createElement('div');
+        mediaDescription.className = "media_description";
+        mediaArticle.appendChild(mediaDescription);
+        const mediaText = document.createElement("h3");
+        mediaText.textContent = title;
+        mediaDescription.appendChild(mediaText);
+    
+        const mediaLikes = document.createElement("div");
+        mediaLikes.className = "media_likes";
+        mediaDescription.appendChild(mediaLikes);
+        const span = document.createElement("span");
+        span.textContent = likes;
+        const icon = document.createElement("i");
+        icon.className = "fa-regular fa-heart icon-heart";
+        icon.setAttribute("tabindex", 0);
+        icon.setAttribute("title", "Like icon");
+        icon.setAttribute("role","button");
+        mediaLikes.appendChild(span);
+        mediaLikes.appendChild(icon);
+
+        return mediaArticle;
     }
+
     return { getMediaCardDOM }
 }

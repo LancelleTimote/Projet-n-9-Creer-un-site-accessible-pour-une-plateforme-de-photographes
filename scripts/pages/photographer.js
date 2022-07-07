@@ -67,6 +67,36 @@ function closeBox() {
     return isOpen = false;
 }
 
+function incrementLikes() {
+    const likesIcon = document.querySelectorAll(".icon_heart");
+
+    likesIcon.forEach(like => {
+        like.onclick = () => {
+            increment(like);
+        }
+
+        like.addEventListener("keydown", (e) => {
+            if(e.key === "Enter") {
+                increment(like)
+            }
+        })
+    })
+
+    function increment(like) {
+        let likeText = like.previousElementSibling;
+
+        if(likeText.classList.contains("liked")) {
+            likeText.classList.remove("liked");
+            likeText.textContent--;
+            like.classList.replace("fa-solid", "fa-regular");
+        }else{
+            likeText.classList.add("liked");
+            likeText.textContent++;
+            like.classList.replace("fa-regular", "fa-solid");
+        }
+    }
+}
+
 function sortMedias(medias) {
     const filterOptions = document.querySelectorAll(".filter_option");
     const selected = document.querySelector(".selected");
@@ -119,6 +149,7 @@ async function init() {
     const medias = await getMedias();
     filterDisplay();
     sortMedias(medias);
+    incrementLikes();
 }
 
 init();
