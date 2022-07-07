@@ -5,20 +5,37 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Fisheye - Photographe </title>
   </head>
   <body>
     <header>
       <a href="index.html" aria-label="Accueil"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page"/></a>
     </header>
+
     <main id="main">
+
       <section class="photograph_header">
         <button class="contact_button" onclick="displayModal()" aria-label="Contactez-moi">Contactez-moi</button>
       </section>
+
       <section class="photograph_medias">
+        <div class="medias_filter">
+          <label>Trier par :</label>
+          <div role="listbox" aria-haspopup="listbox" aria-label="Filtre" id="filter" >
+            <i class="fa-solid fa-angle-up icon_filter"></i>
+            <button role="option" tabindex="0" class="filter_option selected">Popularité</button>
+            <div role="listbox" aria-expanded="false" class="filter_select_options">
+              <button role="option" tabindex="0" class="filter_option">Date</button>
+              <button role="option" tabindex="0" class="filter_option">Titre</button>
+            </div>
+          </div>
+        </div>
         <div class="medias_display"></div>
       </section>
+      
     </main>
+
     <div id="contact_modal" role="dialog" aria-hidden="true">
 			<div class="modal" aria-hidden="true">
 				<header>
