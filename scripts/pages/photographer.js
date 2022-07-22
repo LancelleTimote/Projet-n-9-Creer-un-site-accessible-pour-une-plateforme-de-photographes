@@ -74,7 +74,6 @@ function incrementLikes() {
         like.onclick = () => {
             increment(like);
         }
-
         like.addEventListener("keydown", (e) => {
             if(e.key === "Enter") {
                 increment(like)
@@ -105,7 +104,7 @@ function sortMedias(medias) {
         return media2.likes - media1.likes;
     })
     displayMedia(medias);
-    displayLightbox(mediasList);
+    // displayLightbox(mediasList);
 
     filterOptions?.forEach(filter => {
         filter.onclick = (e) => {
@@ -136,7 +135,7 @@ function sortMedias(medias) {
             closeBox();
             displayMedia(medias);
             incrementLikes();
-            displayLightbox(mediasList);
+            // displayLightbox(mediasList);
         }
     })
 }

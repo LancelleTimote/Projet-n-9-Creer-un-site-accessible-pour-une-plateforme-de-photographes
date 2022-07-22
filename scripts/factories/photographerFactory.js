@@ -9,8 +9,6 @@ function photographerFactory(data) {
         const photographerLink = document.createElement('a');
         const photographerUrl = `photographer.html?id=${id}`;
         photographerLink.setAttribute("href", photographerUrl);
-
-        const divImgTitle = document.createElement('div');
         
         const img = document.createElement('img');
         img.setAttribute("src", picture);
@@ -22,17 +20,14 @@ function photographerFactory(data) {
         const location = document.createElement('h3');
         location.textContent = city + ", " + country;
 
-        const bio = document.createElement('p');
+        const bio = document.createElement('h4');
         bio.textContent = tagline;
         
         const cost = document.createElement('span');
-        cost.setAttribute('class', 'prix');
         cost.textContent = price + '€ /jour';
 
-        article.append(photographerLink, location, bio, cost);
-        photographerLink.appendChild(divImgTitle);
-        divImgTitle.append(img, firstLastName);
-        divImgTitle.setAttribute('class', 'centerFlex');
+        article.append(photographerLink);
+        photographerLink.append(img, firstLastName, location, bio, cost);
 
         return (article);
     }
@@ -48,18 +43,17 @@ function photographerFactory(data) {
         const location = document.createElement('h2');
         location.textContent = city + ", " + country;
 
-        const bio = document.createElement('p');
+        const bio = document.createElement('h3');
         bio.textContent = tagline;
+
+        article.append(firstLastName, location, bio)
 
         const img = document.createElement("img");
         img.setAttribute("src", picture);
         img.setAttribute("alt", "Photo de " + name);
-
-        article.append(firstLastName, location, bio)
         photographerProfile.append(img);
 
         return article;
     }
-
     return { picture, getUserCardDOM, getPhotographerProfile }
 }

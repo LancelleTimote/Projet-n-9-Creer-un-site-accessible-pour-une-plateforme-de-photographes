@@ -7,18 +7,20 @@ function mediasFactory(data) {
         mediaArticle.className = "media_article";
 
         if("video" in data) {
+            const videoFile = `assets/photographers/${photographerId}/${video}`;
+
             const videoElement = document.createElement('video');
+            videoElement.className = "media_video";
             videoElement.setAttribute("controls", "");
             videoElement.setAttribute("tabindex", "0");
             videoElement.dataset.id = id;
             
-            const videoFile = `assets/photographers/${photographerId}/${video}`;
             const sourceVideo = document.createElement('source');
             sourceVideo.setAttribute("src", videoFile);
             sourceVideo.setAttribute("type", "video/mp4");
 
-            videoElement.appendChild(sourceVideo);
             mediaArticle.appendChild(videoElement);
+            videoElement.appendChild(sourceVideo);
         }else{
             const picture = `assets/photographers/${photographerId}/${image}`;
             const img = document.createElement("img");
@@ -52,6 +54,5 @@ function mediasFactory(data) {
 
         return mediaArticle;
     }
-
     return { getMediaCardDOM }
 }
