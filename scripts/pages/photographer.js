@@ -1,5 +1,4 @@
 const photographerId = new URLSearchParams(window.location.search).get("id");
-let namePhotographer;
 let mediasList = [];
 
 async function getPhotographer() {
@@ -39,20 +38,21 @@ function displayMedia(medias) {
 }
 
 let isOpen = false;
+
 function filterDisplay() {
     const icon = document.querySelector(".icon_filter");
-    const filterOptionBox = document.querySelector(".filter_select_options");
+    const filterOptionsBox = document.querySelector(".filter_select_options");
     const selected = document.querySelector(".selected");
-
+    
     selected.onclick = () => {
         if(isOpen) {
-            closeBox();
-        }else{
-            filterOptionBox.getElementsByClassName.display = "flex";
-            filterOptionBox.setAttribute("aria-expanded", "true");
-            icon.classList.add("icon_rotate");
-            filterOptionBox.classList.add("open")
-            isOpen = true;
+        closeBox();
+        } else {
+        filterOptionsBox.style.display = "flex";
+        filterOptionsBox.setAttribute("aria-expanded", "true");
+        icon.classList.add("icon_rotate");
+        filterOptionsBox.classList.add("open")
+        isOpen = true;
         }
     }
 }
@@ -60,11 +60,11 @@ function filterDisplay() {
 function closeBox() {
     const icon = document.querySelector(".icon_filter");
     icon.classList.remove("icon_rotate");
-    const filterOptionBox = document.querySelector(".filter_select_options");
-
-    filterOptionBox.style.display = "none";
-    filterOptionBox.setAttribute("aria-expanded", "false");
-    return isOpen = false;
+    const filterOptionsBox = document.querySelector(".filter_select_options");
+    
+    filterOptionsBox.style.display = "none";
+    filterOptionsBox.setAttribute("aria-expanded", "false");
+    return isOpen = false
 }
 
 function incrementLikes() {
@@ -102,40 +102,40 @@ function sortMedias(medias) {
 
     medias = medias?.sort((media1, media2) => {
         return media2.likes - media1.likes;
-    })
-    displayMedia(medias);
-    // displayLightbox(mediasList);
+    });
+    displayMedia(medias)
+    // displayLightbox(mediasList)
 
     filterOptions?.forEach(filter => {
         filter.onclick = (e) => {
-            switch(e.target.textContent) {
-                case "Popularité" :
+            switch (e.target.textContent) {
+                case "Popularité":
                     medias = medias?.sort((media1, media2) => {
                         return media2.likes - media1.likes;
                     });
-                break
+                break;
 
-                case "Date" :
+                case "Date":
                     medias = medias?.sort((media1, media2) => {
                         return new Date(media2.date) - new Date(media1.date)
                     });
                 break;
 
-                case "Titre" :
+                case "Titre":
                     medias = medias?.sort((media1, media2) => {
                         return media1.title.localeCompare(media2.title);
                     });
-                break
+                break;
             }
 
-            const buttonSelected = filter.textContent;
-            filter.textContent = selected.textContent;
+            const buttonSelected = filter.textContent
+            filter.textContent = selected.textContent
             selected.textContent = buttonSelected;
 
-            closeBox();
-            displayMedia(medias);
-            incrementLikes();
-            // displayLightbox(mediasList);
+            closeBox()
+            displayMedia(medias)
+            incrementLikes()
+            // displayLightbox(mediasList)
         }
     })
 }
