@@ -69,15 +69,17 @@ function closeBox() {
 
 function incrementLikes() {
     const likesIcon = document.querySelectorAll(".icon_heart");
+    const allLikes = document.querySelector(".tag_likes p");
 
     likesIcon.forEach(like => {
         like.onclick = () => {
-            increment(like);
+        increment(like);
         }
+
         like.addEventListener("keydown", (e) => {
-            if(e.key === "Enter") {
-                increment(like)
-            }
+        if(e.key === "Enter") {
+            increment(like)
+        }
         })
     })
 
@@ -85,15 +87,49 @@ function incrementLikes() {
         let likeText = like.previousElementSibling;
 
         if(likeText.classList.contains("liked")) {
-            likeText.classList.remove("liked");
-            likeText.textContent--;
-            like.classList.replace("fa-solid", "fa-regular");
-        }else{
-            likeText.classList.add("liked");
-            likeText.textContent++;
-            like.classList.replace("fa-regular", "fa-solid");
+        likeText.classList.remove("liked");
+        likeText.textContent--;
+        allLikes.textContent--;
+        like.classList.replace("fa-solid", "fa-regular");
+        } else {
+        likeText.classList.add("liked");
+        likeText.textContent++;
+        allLikes.textContent++;
+        like.classList.replace("fa-regular", "fa-solid");
         }
     }
+}
+
+function allLikes(media) {
+    let sum = 0;
+    media?.forEach(like => {
+      sum += like.likes
+    });
+    const allLikes = document.querySelector(".tag_likes p");
+    console.log("sum");
+    console.log(sum);
+    allLikes.textContent = sum;
+    return sum;
+}
+
+function stickyTag(photographer) {
+    const tag = document.querySelector(".tag");
+  
+    const likes = document.createElement("div");
+    likes.className = "tag_likes";
+    const likesText = document.createElement("p");
+    const likesIcon = document.createElement("i");
+    likesIcon.className = "fa-solid fa-heart";
+    likes.appendChild(likesText);
+    likes.appendChild(likesIcon);
+  
+    const price = document.createElement("span");
+    price.textContent = photographer.price + "€/jour";
+  
+    tag.appendChild(likes);
+    tag.appendChild(price);
+  
+    return tag;
 }
 
 function sortMedias(medias) {
@@ -146,9 +182,11 @@ async function init() {
     photographerData.getPhotographerProfile();
 
     const medias = await getMedias();
-    filterDisplay();
     sortMedias(medias);
+    filterDisplay();
     incrementLikes();
+    stickyTag(photographer);
+    allLikes(medias);
 }
 
 init();

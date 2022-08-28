@@ -49,6 +49,7 @@ function lightboxDOM(currentMedia, index, mediasList) {
     const lightboxMedia = document.createElement("div");
     lightboxMedia.className = "lightbox_media";
     lightboxModal.appendChild(lightboxMedia);
+
     if("image" in currentMedia) {
         const lightboxImage = document.createElement("img");
         lightboxImage.className = "lightbox_image";
@@ -69,6 +70,7 @@ function lightboxDOM(currentMedia, index, mediasList) {
         lightboxMedia.appendChild(lightboxVideo);
         lightboxVideo.appendChild(lightboxSourceVideo);
     }
+    
     const lightboxTitle = document.createElement("h3");
     lightboxTitle.className = "lightbox_title";
     lightboxTitle.textContent = title;
@@ -122,6 +124,7 @@ function eventHandler(mediasList, currentMedia) {
 function closeLightbox() {
     const lightboxContainer = document.querySelector(".lightbox_container");
     lightboxContainer.style.display = "none";
+    lightboxContainer.children[0].remove();
     lightboxContainer.setAttribute("aria-hidden", "true");
 }
 
