@@ -57,8 +57,7 @@ function lightboxDOM(currentMedia, index, mediasList) {
         lightboxImage.setAttribute("alt", title);
         lightboxImage.dataset.id = index;
         lightboxMedia.appendChild(lightboxImage);
-    }
-    else {
+    }else{
         const lightboxVideo = document.createElement("video");
         const lightboxSourceVideo = document.createElement("source")
         lightboxVideo.className = "lightbox_video";
@@ -132,7 +131,7 @@ function displayNext(mediasList, currentMedia) {
     const index = mediasList.findIndex((element) => element.id == currentMedia.id);
     if(index === mediasList.length - 1) {
         currentMedia = mediasList[0]
-    } else {
+    }else{
         currentMedia = mediasList[index + 1]
     }
 
@@ -145,7 +144,7 @@ function displayPrevious(mediasList, currentMedia) {
     const index = mediasList.findIndex((element) => element.id == currentMedia.id);
     if(index === 0) {
         currentMedia = mediasList[mediasList.length - 1]
-    } else {
+    }else{
         currentMedia = mediasList[index - 1]
     }
 

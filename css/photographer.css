@@ -230,6 +230,35 @@
 
 /****************************************************************************************************/
 
+/************************************************** Tag **************************************************/
+.tag {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #DB8876;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-right: 20px;
+    padding: 0 20px;
+    font-size: 22px;
+    font-weight: 600;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+
+.tag_likes {
+    display: flex;
+    align-items: center;
+}
+
+.tag_likes p{
+    padding-right: 5px;
+}
+
+/****************************************************************************************************/
+
 #contact_modal {
     display: none;
 }
@@ -299,31 +328,4 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
-}
-
-/***Tag****/
-.tag {
-    width: 30%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #DB8876;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    margin-right: 20px;
-    padding: 0 20px;
-    font-size: 22px;
-    font-weight: 600;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-}
-
-.tag_likes {
-    display: flex;
-    align-items: center;
-}
-
-.tag_likes p{
-    padding-right: 5px;
 }

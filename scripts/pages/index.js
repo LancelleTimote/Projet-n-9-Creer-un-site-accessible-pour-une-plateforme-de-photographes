@@ -1,8 +1,10 @@
+//Récupération des photographes
 async function getPhotographers() {
     const data = await fetch("./data/photographers.json");
-    return await data.json();
+    return data.json();
 }
 
+//Affichage des profils des photographes
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
 
@@ -11,12 +13,13 @@ async function displayData(photographers) {
         const userCardDOM = photographerModel.getUserCardDOM();
         photographersSection.appendChild(userCardDOM);
     });
-};
+}
 
+//Initialisation des fonctions
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
     displayData(photographers);
-};
+}
 
 init();

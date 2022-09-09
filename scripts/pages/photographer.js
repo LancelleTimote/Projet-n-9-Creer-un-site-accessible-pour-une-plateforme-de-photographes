@@ -1,5 +1,6 @@
 const photographerId = new URLSearchParams(window.location.search).get("id");
 let mediasList = [];
+let namePhotographer;
 
 async function getPhotographer() {
     const data = await fetch("./data/photographers.json");
@@ -46,13 +47,13 @@ function filterDisplay() {
     
     selected.onclick = () => {
         if(isOpen) {
-        closeBox();
-        } else {
-        filterOptionsBox.style.display = "flex";
-        filterOptionsBox.setAttribute("aria-expanded", "true");
-        icon.classList.add("icon_rotate");
-        filterOptionsBox.classList.add("open")
-        isOpen = true;
+            closeBox();
+        }else{
+            filterOptionsBox.style.display = "flex";
+            filterOptionsBox.setAttribute("aria-expanded", "true");
+            icon.classList.add("icon_rotate");
+            filterOptionsBox.classList.add("open")
+            isOpen = true;
         }
     }
 }
@@ -73,13 +74,13 @@ function incrementLikes() {
 
     likesIcon.forEach(like => {
         like.onclick = () => {
-        increment(like);
+            increment(like);
         }
 
         like.addEventListener("keydown", (e) => {
-        if(e.key === "Enter") {
-            increment(like)
-        }
+            if(e.key === "Enter") {
+                increment(like)
+            }
         })
     })
 
@@ -87,15 +88,15 @@ function incrementLikes() {
         let likeText = like.previousElementSibling;
 
         if(likeText.classList.contains("liked")) {
-        likeText.classList.remove("liked");
-        likeText.textContent--;
-        allLikes.textContent--;
-        like.classList.replace("fa-solid", "fa-regular");
-        } else {
-        likeText.classList.add("liked");
-        likeText.textContent++;
-        allLikes.textContent++;
-        like.classList.replace("fa-regular", "fa-solid");
+            likeText.classList.remove("liked");
+            likeText.textContent--;
+            allLikes.textContent--;
+            like.classList.replace("fa-solid", "fa-regular");
+        }else{
+            likeText.classList.add("liked");
+            likeText.textContent++;
+            allLikes.textContent++;
+            like.classList.replace("fa-regular", "fa-solid");
         }
     }
 }
@@ -103,11 +104,9 @@ function incrementLikes() {
 function allLikes(media) {
     let sum = 0;
     media?.forEach(like => {
-      sum += like.likes
+        sum += like.likes
     });
     const allLikes = document.querySelector(".tag_likes p");
-    console.log("sum");
-    console.log(sum);
     allLikes.textContent = sum;
     return sum;
 }
@@ -184,9 +183,9 @@ async function init() {
     const medias = await getMedias();
     sortMedias(medias);
     filterDisplay();
-    incrementLikes();
     stickyTag(photographer);
     allLikes(medias);
+    incrementLikes();
 }
 
 init();
