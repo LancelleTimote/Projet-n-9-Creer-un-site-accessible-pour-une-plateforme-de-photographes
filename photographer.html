@@ -38,29 +38,29 @@
     <div id="contact_modal" role="dialog" aria-hidden="true">
 			<div class="modal" aria-hidden="true">
 				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" alt="Fermer la fenêtre" onclick="closeModal()" />
+          <h2 class="modal_title">Contactez-moi</h2>
+          <img id="close_modal" src="assets/icons/close.svg" alt="Fermer la fenêtre" onclick="closeModal()" />
         </header>
 
-				<form name="contact">
-					<div>
+				<form name="contact" id="contact_form">
+					<div class="form_data">
 						<label for="first">Prénom</label>
-						<input id="first" name="first" type="text" class="text-control" aria-label="Entrez votre prénom"/>
+						<input id="first" name="first" type="text" class="text_control" aria-label="Entrez votre prénom"/>
 					</div>
 
-          <div>
+          <div class="form_data">
             <label for="last">Nom</label>
-            <input id="last" name="last" type="text" class="text-control" aria-label="Entrez votre nom"/>
+            <input id="last" name="last" type="text" class="text_control" aria-label="Entrez votre nom"/>
           </div>
 
-          <div>
+          <div class="form_data">
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" class="text-control" aria-label="Entrez votre email"/>
+            <input id="email" name="email" type="email" class="text_control" aria-label="Entrez votre email"/>
           </div>
 
-          <div>
+          <div class="form_data">
             <label for="message">Votre message</label>
-            <textarea name="message" id="message" class="text-control" cols="5" rows="30" aria-label="Entrez votre message"></textarea>
+            <textarea name="message" id="message" class="text_control" cols="5" rows="30" aria-label="Entrez votre message"></textarea>
           </div>
           
           <button class="contact_button" aria-label="Envoyer le formulaire">Envoyer</button>
