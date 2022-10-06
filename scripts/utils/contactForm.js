@@ -2,16 +2,18 @@ const closeButton = document.querySelector("#close_modal");
 const modal = document.getElementById("contact_modal");
 const main = document.querySelector("main");
 const form = document.querySelector("#contact_form");
-const formData = document.querySelectorAll(".form_data");
-const first = document.querySelector("#first");
-const last = document.querySelector("#last");
-const email = document.querySelector("#email");
-const message = document.querySelector("#message");
 const headerModal = document.querySelector(".modal_title");
 const contactButton = document.querySelector(".contact_button");
 
-const nameRegex = /[a-zA-Z]/;
-const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+const first = document.querySelector("#firstName");
+const last = document.querySelector("#lastName");
+const email = document.querySelector("#email");
+const message = document.querySelector("#message");
+
+const firstNameValidation = document.querySelector("#firstNameValidation");
+const lastNameValidation = document.querySelector("#lastNameValidation");
+const emailValidation = document.querySelector("#emailValidation");
+const messageValidation = document.querySelector("#messageValidation");
 
 
 function getPhotographerName(data) {
@@ -40,71 +42,123 @@ window.addEventListener("keydown", (e) => {
     }
 })
 
-function showError(inputElement, message) {
-    inputElement.parentElement.dataset.errorVisible = 'true';
-    inputElement.parentElement.dataset.error = message;
+//Regex
+function regExLastnameFirstname(value) {
+    return /^(?:((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-.\s])){1,}(['’,\-\.]){0,1}){2,}(([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-. ]))*(([ ]+){0,1}(((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){1,})(['’\-,\.]){0,1}){2,}((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){2,})?)*)$/.test(value);
+    //la méthode test() vérifie s'il y a une correspondance entre un texte et une expression rationnelle.
+    //elle retourne true en succès, et false en cas contraire (booléen).
 }
 
-function hideError(inputElement) {
-    delete inputElement.parentElement.dataset.errorVisible;
-    delete inputElement.parentElement.dataset.error;
+//Texte validation ok
+function textCorrectForm(querySelectorId){
+    document.querySelector(`#${querySelectorId}`).innerHTML = "Valide";
 }
 
-function checkFirst() {
-    if(first.value.length < 2 || nameRegex.test(first.value) === false) {
-        showError(first, "Veuillez entrer un prénom valide")
+//Retire texte validation
+function DeleteTextCorrectForm(querySelectorId){
+    document.querySelector(`#${querySelectorId}`).remove("Valide");
+}
+
+//Couleur texte champ correct
+function colorTextCorrectForm(querySelectorId) {
+    document.querySelector(`#${querySelectorId}`).classList.add("p-valide");
+    document.querySelector(`#${querySelectorId}`).classList.remove("p-error");
+}
+
+//Couleur texte champ incorrect
+function colorTextIncorrectForm(querySelectorId) {
+    document.querySelector(`#${querySelectorId}`).classList.add("p-error");
+    document.querySelector(`#${querySelectorId}`).classList.remove("p-valide");
+}
+
+//Couleur border champ correct
+function colorBorderCorrectForm(querySelectorId) {
+    document.querySelector(`#${querySelectorId}`).classList.add("border-valide");
+    document.querySelector(`#${querySelectorId}`).classList.remove("border-error");
+}
+
+//Couleur border champ incorrect
+function colorBorderIncorrectForm(querySelectorId) {
+    document.querySelector(`#${querySelectorId}`).classList.add("border-error");
+    document.querySelector(`#${querySelectorId}`).classList.remove("border-valide");
+}
+
+//Contrôle de la validité du prénom
+function firstNameControl() {
+    if (regExLastnameFirstname(firstName.value)) {
+        textCorrectForm("firstNameValidation");
+        colorTextCorrectForm("firstNameValidation");
+        colorBorderCorrectForm("firstName");
+        return true;
     } else {
-        hideError(first)
+        firstNameValidation.innerHTML = "Veuillez entrer 2 à 20 caractères pour le champ du prénom.";
+        colorTextIncorrectForm("firstNameValidation");
+        colorBorderIncorrectForm("firstName");
+        return false;
     }
 }
 
-function checkLast() {
-    if(last.value.length < 2 || nameRegex.test(last.value) === false) {
-        showError(last, "Veuillez entrer un nom valide")
+//Contrôle de la validité du nom
+function lastNameControl() {
+    if (regExLastnameFirstname(lastName.value)) {
+        textCorrectForm("lastNameValidation");
+        colorTextCorrectForm("lastNameValidation");
+        colorBorderCorrectForm("lastName");
+        return true;
     } else {
-        hideError(last)
+        lastNameValidation.innerHTML = "Veuillez entrer 2 à 20 caractères pour le champ du nom.";
+        colorTextIncorrectForm("lastNameValidation");
+        colorBorderIncorrectForm("lastName");
+        return false;
     }
 }
 
-function checkEmail() {
-    if(first.value === "" || emailRegex.test(email.value) === false) {
-        showError(email, "Veuillez entrer un email valide")
+//Contrôle de la validité de l'email
+function emailControl() {
+    if(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value)) {
+        textCorrectForm("emailValidation");
+        colorTextCorrectForm("emailValidation");
+        colorBorderCorrectForm("email");
+        return true;
     } else {
-        hideError(email)
+        emailValidation.innerHTML = "Veuillez entrer un email valide.";
+        colorTextIncorrectForm("emailValidation");
+        colorBorderIncorrectForm("email");
+        return false;
     }
 }
 
-function checkMessage() {
-    if(message.value.length < 10) {
-        showError(message, "Veuillez laisser un message")
+//Contrôle de la validité du message
+function messageControl() {
+    if(/^[A-Za-z0-9.]{5,1000}$/.test(message.value)) {
+        textCorrectForm("messageValidation");
+        colorTextCorrectForm("messageValidation");
+        colorBorderCorrectForm("message");
+        return true;
     } else {
-        hideError(message)
-    }
-}
-
-function validation() {
-    checkFirst();
-    checkLast();
-    checkEmail();
-    checkMessage();
-
-    let isValid = true;
-    for(let errorAttribute of formData) {
-        if(errorAttribute.getAttribute("data-error")) {
-            isValid = false;
-        }
-    }
-
-    if(isValid) {
-        console.log("prénom : " + first.value);
-        console.log("nom : " + last.value);
-        console.log("email : " + email.value);
-        console.log("message : " + message.value);
-        form.reset();
+        messageValidation.innerHTML = "Veuillez entrer un message valide.";
+        colorTextIncorrectForm("messageValidation");
+        colorBorderIncorrectForm("message");
+        return false;
     }
 }
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    validation()
+    //Contrôle validité du formulaire
+    if(firstNameControl() && lastNameControl() && emailControl() && messageControl()) {
+        console.log(
+            "Prénom :", firstName.value,
+            "Nom :", lastName.value,
+            "Email :", email.value,
+            "Message :", message.value,
+        );
+        DeleteTextCorrectForm("firstNameValidation");
+        DeleteTextCorrectForm("lastNameValidation");
+        DeleteTextCorrectForm("emailValidation");
+        DeleteTextCorrectForm("messageValidation");
+        form.reset();
+    } else {
+        alert("Veuillez remplir correctement le formulaire.");
+    }
 })

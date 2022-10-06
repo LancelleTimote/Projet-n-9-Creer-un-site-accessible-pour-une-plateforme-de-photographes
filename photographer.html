@@ -44,25 +44,29 @@
 
 				<form name="contact" id="contact_form">
 					<div class="form_data">
-						<label for="first">Prénom</label>
-						<input id="first" name="first" type="text" class="text_control" aria-label="Entrez votre prénom"/>
+						<label for="firstName">Prénom</label>
+						<input id="firstName" name="firstName" type="text" class="text_control" aria-label="Entrez votre prénom"/>
 					</div>
+          <p id="firstNameValidation"></p>
 
           <div class="form_data">
-            <label for="last">Nom</label>
-            <input id="last" name="last" type="text" class="text_control" aria-label="Entrez votre nom"/>
+            <label for="lastName">Nom</label>
+            <input id="lastName" name="lastName" type="text" class="text_control" aria-label="Entrez votre nom"/>
           </div>
+          <p id="lastNameValidation"></p>
 
           <div class="form_data">
             <label for="email">Email</label>
             <input id="email" name="email" type="email" class="text_control" aria-label="Entrez votre email"/>
           </div>
+          <p id="emailValidation"></p>
 
           <div class="form_data">
-            <label for="message">Votre message</label>
+            <label for="message">Message</label>
             <textarea name="message" id="message" class="text_control" cols="5" rows="30" aria-label="Entrez votre message"></textarea>
           </div>
-          
+          <p id="messageValidation"></p>
+
           <button class="contact_button" aria-label="Envoyer le formulaire">Envoyer</button>
 				</form>
 			</div>
