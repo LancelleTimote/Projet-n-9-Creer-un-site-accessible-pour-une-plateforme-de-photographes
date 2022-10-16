@@ -4,7 +4,7 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/LancelleTimote/Projet-n-9-Creer-un-site-accessible-pour-une-plateforme-de-photographes?style=for-the-badge)
 ![GitHub repo size](https://img.shields.io/github/repo-size/LancelleTimote/Projet-n-9-Creer-un-site-accessible-pour-une-plateforme-de-photographes?style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/LancelleTimote/Projet-n-9-Creer-un-site-accessible-pour-une-plateforme-de-photographes?style=for-the-badge)
-![GitHub](https://img.shields.io/github/license/LancelleTimote/Projet-n-2-Dynamiser-une-page-web-avec-des-animations-CSS?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/LancelleTimote/Projet-n-9-Creer-un-site-accessible-pour-une-plateforme-de-photographes?style=for-the-badge)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/timote-lancelle-devweb/)
 
 ## :mag: Aperçu
@@ -56,7 +56,7 @@ Avec votre cheffe de projet Amanda et le Designer UI, vous venez de faire une r�
 
 ## :exclamation: 5. Prérequis <a name = "prerequis"></a>
 
-Aucun
+Dans Visual Studio Code, télécharger l'extension "Live server".
 
 ## :wrench: 6. Installation <a name = "installation"></a>
 
@@ -64,8 +64,7 @@ Cloner ce repository.
 
 ## :question: 7. Utilisation du site web <a name = "utilisation_siteweb"></a>
 
-- Dans Visual Studio Code, télécharger l'extension "Live server".
-- Toujours dans l'éditeur de code, appuyez sur F1, puis appuyez sur "Live Server : Open with Live Server.
+Dans Visual Studio Code, appuyez sur F1, puis appuyez sur "Live Server : Open with Live Server.
 
 ## :beers: 8. Auteurs et Contributeurs <a name = "auteurs_contributeurs"></a>
 
