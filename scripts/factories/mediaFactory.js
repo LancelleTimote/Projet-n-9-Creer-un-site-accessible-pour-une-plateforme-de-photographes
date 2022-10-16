@@ -14,7 +14,7 @@ function mediasFactory(data) {
             videoElement.setAttribute("controls", "");
             videoElement.setAttribute("tabindex", "0");
             videoElement.dataset.id = id;
-            
+
             const sourceVideo = document.createElement('source');
             sourceVideo.setAttribute("src", videoFile);
             sourceVideo.setAttribute("type", "video/mp4");
@@ -38,7 +38,7 @@ function mediasFactory(data) {
         const mediaText = document.createElement("h3");
         mediaText.textContent = title;
         mediaDescription.appendChild(mediaText);
-    
+
         const mediaLikes = document.createElement("div");
         mediaLikes.className = "media_likes";
         mediaDescription.appendChild(mediaLikes);

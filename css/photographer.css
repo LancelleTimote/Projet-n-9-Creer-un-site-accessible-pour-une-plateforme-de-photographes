@@ -232,7 +232,7 @@
 
 /************************************************** Tag **************************************************/
 .tag {
-    width: 30%;
+    width: 20%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -283,10 +283,9 @@
     width: 35%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
     padding: 25px;
-    margin: 15px auto;
+    margin: 20px auto;
 }
 
 .modal_open {
@@ -300,8 +299,10 @@
 }
 
 .modal header {
-    justify-content: space-between;
     width: 100%;
+    height: 110px;
+    margin-bottom: 15px;
+    align-items: baseline;
 }
 
 .modal header img {
@@ -311,7 +312,7 @@
 .modal header h2 {
     font-size: 2.5rem;
     font-weight: normal;
-    text-align: center;
+    margin-top: 0;
 }
 
 form {
@@ -349,30 +350,22 @@ textarea {
     font-size: 1.5rem;
 }
 
-.form_data[data-error]::after {
-    font-size: 1.25rem;
-    line-height: 1em;
-    color: red;
-    text-align: start;
-    content: attr(data-error);
-    width: 100%;
-    opacity: 0;
-    margin-top: 0.3em;
-    margin-bottom: 0.5em;
-    display: block;
-    transition: opacity 0.3s ease;
+.p-error, .p-valide {
+    margin: 10px 0;
 }
 
-.form_data[data-error-visible='true']::after {
-    opacity: 1;
+.p-error {
+    color: rgba(165, 0, 16, 1);
 }
 
-.form_data[data-error-visible='true'] .text-control {
-    border: 2px solid red;
+.p-valide {
+    color: rgba(0, 129, 73, 1);
 }
 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4rem;
-    color: red;
+.border-error {
+    border: 2px solid rgba(165, 0, 16, 1);
+}
+
+.border-valide {
+    border: 2px solid rgba(0, 129, 73, 1);
 }

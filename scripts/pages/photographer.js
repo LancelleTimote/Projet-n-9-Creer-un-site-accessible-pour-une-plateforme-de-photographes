@@ -44,7 +44,7 @@ function filterDisplay() {
     const icon = document.querySelector(".icon_filter");
     const filterOptionsBox = document.querySelector(".filter_select_options");
     const selected = document.querySelector(".selected");
-    
+
     selected.onclick = () => {
         if(isOpen) {
             closeBox();
@@ -62,7 +62,7 @@ function closeBox() {
     const icon = document.querySelector(".icon_filter");
     icon.classList.remove("icon_rotate");
     const filterOptionsBox = document.querySelector(".filter_select_options");
-    
+
     filterOptionsBox.style.display = "none";
     filterOptionsBox.setAttribute("aria-expanded", "false");
     return isOpen = false
@@ -113,7 +113,7 @@ function allLikes(media) {
 
 function stickyTag(photographer) {
     const tag = document.querySelector(".tag");
-  
+
     const likes = document.createElement("div");
     likes.className = "tag_likes";
     const likesText = document.createElement("p");
@@ -121,13 +121,13 @@ function stickyTag(photographer) {
     likesIcon.className = "fa-solid fa-heart";
     likes.appendChild(likesText);
     likes.appendChild(likesIcon);
-  
+
     const price = document.createElement("span");
     price.textContent = photographer.price + "€/jour";
-  
+
     tag.appendChild(likes);
     tag.appendChild(price);
-  
+
     return tag;
 }
 
@@ -186,6 +186,7 @@ async function init() {
     stickyTag(photographer);
     allLikes(medias);
     incrementLikes();
+    addPhotographerName(photographer)
 }
 
 init();

@@ -9,20 +9,20 @@ function photographerFactory(data) {
         const photographerLink = document.createElement('a');
         const photographerUrl = `photographer.html?id=${id}`;
         photographerLink.setAttribute("href", photographerUrl);
-        
+
         const img = document.createElement('img');
         img.setAttribute("src", picture);
         img.setAttribute("alt", "Photo de " + name);
-        
+
         const firstLastName = document.createElement('h2');
         firstLastName.textContent = name;
-        
+
         const location = document.createElement('h3');
         location.textContent = city + ", " + country;
 
         const bio = document.createElement('h4');
         bio.textContent = tagline;
-        
+
         const cost = document.createElement('span');
         cost.textContent = price + '€ /jour';
 

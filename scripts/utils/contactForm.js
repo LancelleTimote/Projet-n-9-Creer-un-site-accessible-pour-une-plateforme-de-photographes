@@ -15,9 +15,8 @@ const lastNameValidation = document.querySelector("#lastNameValidation");
 const emailValidation = document.querySelector("#emailValidation");
 const messageValidation = document.querySelector("#messageValidation");
 
-
-function getPhotographerName(data) {
-    headerModal.innerHTML += ` ${data}`;
+function addPhotographerName(photographe) {
+    document.querySelector("#test").innerHTML = "Contactez-moi<br>\n" + photographe.name;
 }
 
 function displayModal() {
@@ -50,13 +49,8 @@ function regExLastnameFirstname(value) {
 }
 
 //Texte validation ok
-function textCorrectForm(querySelectorId){
+function textCorrectForm(querySelectorId) {
     document.querySelector(`#${querySelectorId}`).innerHTML = "Valide";
-}
-
-//Retire texte validation
-function DeleteTextCorrectForm(querySelectorId){
-    document.querySelector(`#${querySelectorId}`).remove("Valide");
 }
 
 //Couleur texte champ correct
@@ -130,7 +124,7 @@ function emailControl() {
 
 //Contrôle de la validité du message
 function messageControl() {
-    if(/^[A-Za-z0-9.]{5,1000}$/.test(message.value)) {
+    if(/[^A-Za-z0-9 .'?!,@$#-_]/.test(message.value)) {
         textCorrectForm("messageValidation");
         colorTextCorrectForm("messageValidation");
         colorBorderCorrectForm("message");
@@ -143,6 +137,16 @@ function messageControl() {
     }
 }
 
+//Retire texte correct
+function DeleteTextCorrectForm(querySelectorId) {
+    document.querySelector(`#${querySelectorId}`).innerHTML = '';
+}
+
+//Retire bordure correct + remet une width
+function DeleteBorderCorrectForm(querySelectorId) {
+    document.querySelector(`#${querySelectorId}`).classList.remove("border-valide");
+}
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     //Contrôle validité du formulaire
@@ -153,10 +157,14 @@ form.addEventListener("submit", (e) => {
             "Email :", email.value,
             "Message :", message.value,
         );
-        DeleteTextCorrectForm("firstNameValidation");
-        DeleteTextCorrectForm("lastNameValidation");
-        DeleteTextCorrectForm("emailValidation");
-        DeleteTextCorrectForm("messageValidation");
+        const deleteTextCorrect = ["firstNameValidation", "lastNameValidation", "emailValidation", "messageValidation"]
+        deleteTextCorrect.forEach(element => {
+            DeleteTextCorrectForm(element);
+        })
+        const deleteBorderCorrect = ["firstName", "lastName", "email", "message"]
+        deleteBorderCorrect.forEach(element => {
+            DeleteBorderCorrectForm(element);
+        })
         form.reset();
     } else {
         alert("Veuillez remplir correctement le formulaire.");

@@ -69,7 +69,7 @@ function lightboxDOM(currentMedia, index, mediasList) {
         lightboxMedia.appendChild(lightboxVideo);
         lightboxVideo.appendChild(lightboxSourceVideo);
     }
-    
+
     const lightboxTitle = document.createElement("h3");
     lightboxTitle.className = "lightbox_title";
     lightboxTitle.textContent = title;
@@ -104,7 +104,7 @@ function eventHandler(mediasList, currentMedia) {
     lightboxPrevious.onclick = () => {
         displayPrevious(mediasList, currentMedia);
     }
-    
+
     lightboxNext.onclick = () => {
         displayNext(mediasList, currentMedia);
     }
@@ -149,6 +149,6 @@ function displayPrevious(mediasList, currentMedia) {
     }
 
     lightboxContainer.innerHTML = "";
-    
+
     lightboxDOM(currentMedia, index, mediasList)
 }
