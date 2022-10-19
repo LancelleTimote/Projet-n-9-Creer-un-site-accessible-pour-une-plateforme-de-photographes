@@ -1,5 +1,6 @@
 const photographerId = new URLSearchParams(window.location.search).get("id");
 let mediasList = [];
+// eslint-disable-next-line no-unused-vars
 let namePhotographer;
 
 async function getPhotographer() {
@@ -31,6 +32,7 @@ function displayMedia(medias) {
     photographerMediasSection.innerHTML = "";
 
     medias?.forEach(media => {
+        // eslint-disable-next-line no-undef
         const photographerMedia = new mediasFactory(media);
         const mediaCardDOM = photographerMedia.getMediaCardDOM();
         photographerMediasSection.appendChild(mediaCardDOM);
@@ -139,6 +141,7 @@ function sortMedias(medias) {
         return media2.likes - media1.likes;
     });
     displayMedia(medias)
+    // eslint-disable-next-line no-undef
     displayLightbox(mediasList)
 
     filterOptions?.forEach(filter => {
@@ -170,6 +173,7 @@ function sortMedias(medias) {
             closeBox()
             displayMedia(medias)
             incrementLikes()
+            // eslint-disable-next-line no-undef
             displayLightbox(mediasList)
         }
     })
@@ -177,6 +181,7 @@ function sortMedias(medias) {
 
 async function init() {
     const photographer = await getPhotographer();
+    // eslint-disable-next-line no-undef
     const photographerData = photographerFactory(photographer);
     photographerData.getPhotographerProfile();
 
@@ -186,6 +191,7 @@ async function init() {
     stickyTag(photographer);
     allLikes(medias);
     incrementLikes();
+    // eslint-disable-next-line no-undef
     addPhotographerName(photographer)
 }
 

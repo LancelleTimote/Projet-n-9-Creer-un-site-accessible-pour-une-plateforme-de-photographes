@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 function photographerFactory(data) {
     const { id, portrait, name, city, country, tagline, price } = data;
     const picture = `assets/photographers/photographers_profile_photo/${portrait}`;

@@ -2,11 +2,10 @@ const closeButton = document.querySelector("#close_modal");
 const modal = document.getElementById("contact_modal");
 const main = document.querySelector("main");
 const form = document.querySelector("#contact_form");
-const headerModal = document.querySelector(".modal_title");
 const contactButton = document.querySelector(".contact_button");
 
-const first = document.querySelector("#firstName");
-const last = document.querySelector("#lastName");
+const firstName = document.querySelector("#firstName");
+const lastName = document.querySelector("#lastName");
 const email = document.querySelector("#email");
 const message = document.querySelector("#message");
 
@@ -15,16 +14,17 @@ const lastNameValidation = document.querySelector("#lastNameValidation");
 const emailValidation = document.querySelector("#emailValidation");
 const messageValidation = document.querySelector("#messageValidation");
 
+// eslint-disable-next-line no-unused-vars
 function addPhotographerName(photographe) {
     document.querySelector("#test").innerHTML = "Contactez-moi<br>\n" + photographe.name;
 }
 
+// eslint-disable-next-line no-unused-vars
 function displayModal() {
     modal.style.display = "block";
     modal.setAttribute("aria-hidden", "false");
     modal.classList.add("modal_open");
     main.setAttribute("aria-hidden", "true");
-    first.focus();
 }
 
 function closeModal() {
@@ -43,6 +43,7 @@ window.addEventListener("keydown", (e) => {
 
 //Regex
 function regExLastnameFirstname(value) {
+    // eslint-disable-next-line no-useless-escape
     return /^(?:((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-.\s])){1,}(['’,\-\.]){0,1}){2,}(([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-. ]))*(([ ]+){0,1}(((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){1,})(['’\-,\.]){0,1}){2,}((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){2,})?)*)$/.test(value);
     //la méthode test() vérifie s'il y a une correspondance entre un texte et une expression rationnelle.
     //elle retourne true en succès, et false en cas contraire (booléen).
@@ -85,7 +86,7 @@ function firstNameControl() {
         colorBorderCorrectForm("firstName");
         return true;
     } else {
-        firstNameValidation.innerHTML = "Veuillez entrer 2 à 20 caractères pour le champ du prénom.";
+        firstNameValidation.innerHTML = "Veuillez entrer un prénom contenant au moins 2 caractères.";
         colorTextIncorrectForm("firstNameValidation");
         colorBorderIncorrectForm("firstName");
         return false;
@@ -100,7 +101,7 @@ function lastNameControl() {
         colorBorderCorrectForm("lastName");
         return true;
     } else {
-        lastNameValidation.innerHTML = "Veuillez entrer 2 à 20 caractères pour le champ du nom.";
+        lastNameValidation.innerHTML = "Veuillez entrer un nom contenant au moins 2 caractères.";
         colorTextIncorrectForm("lastNameValidation");
         colorBorderIncorrectForm("lastName");
         return false;
@@ -124,13 +125,13 @@ function emailControl() {
 
 //Contrôle de la validité du message
 function messageControl() {
-    if(/[^A-Za-z0-9 .'?!,@$#-_]/.test(message.value)) {
+    if(/^[A-Za-z0-9 .'?!,@$#-_]{20,10000}$/.test(message.value)) {
         textCorrectForm("messageValidation");
         colorTextCorrectForm("messageValidation");
         colorBorderCorrectForm("message");
         return true;
     } else {
-        messageValidation.innerHTML = "Veuillez entrer un message valide.";
+        messageValidation.innerHTML = "Veuillez entrer un message contenant au moins 20 caractères.";
         colorTextIncorrectForm("messageValidation");
         colorBorderIncorrectForm("message");
         return false;

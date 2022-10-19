@@ -6,6 +6,7 @@ document.body.appendChild(lightboxContainer);
 
 let index = 0;
 
+// eslint-disable-next-line no-unused-vars
 function displayLightbox(mediasList) {
     const mediasDom = document.querySelectorAll(".media_img, .media_video");
 
